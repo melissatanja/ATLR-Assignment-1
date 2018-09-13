@@ -1,4 +1,5 @@
 var textures = [i1];
+var t = random(textures[i]);
 
 var i1;
 
@@ -7,8 +8,6 @@ function preload(){
 }
 
 // textures = append(textures, i1);
-
-var r = 0;
 
 function setup(){
 	createCanvas(800, 800, WEBGL);
@@ -22,25 +21,35 @@ function draw(){
 
 	directionalLight(255, 247, 221, 0, 0);
 
+	planet(50, 0, t, 200, 0, 0);
+	planet(75, 1, t, -200, 0, 0);
+
 	r+=0.005;
 
-	translate(200, 0, 0);
-	ambientMaterial(24, 156, 136);
-	rotateY(r);
-	noStroke();
-	// texture(img);
-	sphere(50);
+	// translate(200, 0, 0);
+	// ambientMaterial(24, 156, 136);
+	// rotateY(r);
+	// noStroke();
+	// // texture(img);
+	// sphere(50);
 }
 
-class planets {
-	size, rotation, texture, xpos, ypos, zpos;
-	planets(s, r, t, x, y, z){
-		size = s;
-		rotation = r;
-		texture = t;
-		xpos = x;
-		ypos = y;
-		zpos = z;
-	}
-
+function planet(s, r, t, x, y, z){
+	translate(x, y, z);
+	sphere(s);
+	rotateY(r); 
+	texture(t);
 }
+
+// class planets {
+// 	size, rotation, texture, xpos, ypos, zpos;
+// 	planets(s, r, t, x, y, z){
+// 		size = s;
+// 		rotation = r;
+// 		texture = t;
+// 		xpos = x;
+// 		ypos = y;
+// 		zpos = z;
+// 	}
+
+// }
