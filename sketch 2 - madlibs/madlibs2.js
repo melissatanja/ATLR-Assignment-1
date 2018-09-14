@@ -1,8 +1,8 @@
-var nns = ["man", "girl", "boy", "stranger", "woman", "dog", "cat", "horse", "cow", "table", "bed", "pillow", "lamp", "chair", "bottle", "hammer", "painting", "laptop", "picture"];
-var ads = ["pretty", "funny", "silly", "ridiculous", "mean", "rough", "soft", "quiet", "shy", "perfect", "thin", "tall", "green", "huge", "crooked", "blue", "smooth", "happy", "crazy"];
-var vbs = ["ran into","jumped on", "scratched", "coughed on", "yelled at", "shook", "bent", "pulled on", "made", "put down", "touched", "hugged", "smiled at", "fell on", "tore up", "looked at", "laughed at", "hit"];
+var nns = ["man", "girl", "boy", "stranger", "woman", "dog", "cat", "horse", "cow", "table", "bed", "pillow", "lamp", "chair", "bottle", "hammer", "painting", "laptop", "picture", "mountain", "ocean", "photo", "house", "flower", "movie", "song", "book", "band", "office", "hero", "monkey", "child", "baby"];
+var ads = ["pretty", "funny", "silly", "ridiculous", "mean", "rough", "soft", "quiet", "shy", "perfect", "thin", "tall", "green", "huge", "crooked", "blue", "smooth", "happy", "crazy", "attractive", "elegant", "ambitious", "calm", "brave", "gentle", "polite", "silly", "funny", "clever", "angry", "clumsy", "nervous", "repulsive", "scary", "grumpy", "big", "little", "icy", "helpful", "poor", "rich", "powerful", "boring"];
+var vbs = ["ran into","jumped on", "scratched", "coughed on", "yelled at", "shook", "bent", "pulled on", "made", "put down", "touched", "hugged", "smiled at", "fell on", "tore up", "looked at", "laughed at", "hit", "appreciated", "stopped", "talked to", "cooked for", "washed", "bit", "carried", "chased", "comforted", "embarrassed", "grabbed", "ignored", "kissed", "measured", "needed", "played with", "pined for", "licked", "replaced"];
 var ats = ["the", "a"];
-var cns = ["then", "and", "after", "even though", "while"];
+var cns = ["then", "and", "after", "even though", "while", "before", "since", "because", "however", "and then", "meanwhile"];
 
 var start = 120;
 var ww = 160;

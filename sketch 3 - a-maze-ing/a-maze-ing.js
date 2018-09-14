@@ -56,11 +56,11 @@ function finish(){
 		stroke(255);
 		strokeWeight(5);
 		rectMode(CENTER);
-		rect(wi/2, h/2, 600, 600);
+		rect(wi/2, h/2, 580, 580);
 		textSize(75);
 		fill(random(100), random(100), random(255));
 		textAlign(CENTER, CENTER);
-		text("Congrats! You've completed the a-maze-ing maze!", wi/2, h/2, wi, h);
+		text("Congrats! You've completed the a-maze-ing maze!", wi/2, h/2, 580, 580);
 		noLoop();
 	}
 }

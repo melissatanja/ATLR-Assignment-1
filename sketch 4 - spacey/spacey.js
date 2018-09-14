@@ -1,21 +1,16 @@
+var t;
+var r;
 var textures;
 
-// var t; //= random(0, textures.length);
-// //textures[t];
-
-var i1;
-
 function preload(){
-	i1 = loadImage('assets/rock1.jpg');
-	textures = i1;
+	var i1 = loadImage('assets/rock1.jpg');
 }
-
-var r = 0;
-var textures = [];
 
 function setup(){
 	createCanvas(800, 800, WEBGL);
-	var t = random(0, textures.length);
+	t = random(0, textures.length);
+	r = 0;
+	textures = [];
 }
 
 function draw(){

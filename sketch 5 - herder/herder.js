@@ -1,4 +1,4 @@
-var cow = loadImage
+var cowpic = loadImage
 var moo = createAudio
 
 var w = 800;
@@ -17,25 +17,22 @@ function draw(){
 	}
 }
 
-// function cow(){
-// 	fill(255);
-// 	stroke(0);
-// 	strokeWeight(1);
-// 	ellipse(x, y, 50, 50);
-// 	ellipse(x, y + 10, 5, 10);
-// }
-
 var cow = {
-	// sface: (50, 50),
-	// snose: (10, 30),
-	// seye: (10, 10),
-	// spupil: (5, 5),
-	// sear: (15, 5),
-	// lface: (x, y),
-	// lnose: (),
-
-	// noise: cnoise
-
-	face: cow
+	face: cowpic,
 	noise: moo
 }
+
+// var pig = {
+// 	face: pigpic, 
+// 	noise: oink
+// }
+
+// var sheep = {
+// 	face: sheeppic,
+// 	noise: baa
+// }
+
+// var rooster = {
+// 	face: roosterpic,
+// 	noise: doodledoo
+// }
