@@ -7,10 +7,11 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(800, 800, WEBGL);
+	textures = [];
 	t = random(0, textures.length);
 	r = 0;
-	textures = [];
+
+	createCanvas(800, 800, WEBGL);
 }
 
 function draw(){

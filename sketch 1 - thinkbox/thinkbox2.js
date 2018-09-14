@@ -1,5 +1,5 @@
-var w = 800;
-var h = 800;
+var w = 700;
+var h = 700;
 
 function setup(){
 	createCanvas(w, h);
