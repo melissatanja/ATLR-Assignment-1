@@ -5,6 +5,9 @@
 
 // should I make an array of cows? will that let them move and be interacted with independently?
 var cow;
+var cartouch;
+var cowinpen;
+var cowimg;
 
 var tlv;
 var tlh;
@@ -15,10 +18,11 @@ var blh;
 var brv;
 var brh;
 
-var x;
-var y;
-var xc;
-var yc;
+var cx;
+var cy;
+var cs;
+
+var speed;
 
 var w;
 var h;
@@ -31,50 +35,58 @@ function preload(){
 }
 
 function setup(){
-	// x = random(w/5, (w/5)*4);
+	// cx = random(w/5, (w/5)*4);
 	// y = random(h/5, (h/5)*4);
 	w = 800;
 	h = 800;
 
 	// var cow = {
-	// 	cpic: image(cowimg, x, y, 15, 15),
+	// 	cpic: image(cowimg, cx, y, 15, 15),
 	// 	noise: moo,
 	// 	size: 15,
 	// 	move: random(-5, 5),
-	// 	x: x,
+	// 	cx: cx,
 	// 	y: y,
-	// 	xc: xc,
-	// 	yc: yc
+	// 	ccx: ccx,
+	// 	cy: cy
 	// 	}
 
-	// cowpic = image(cowimg, x, y, cow.size, cow.size);
-	var cowtouch = false;
-	var cowinpen = false;
+	// cowpic = image(cowimg, cx, y, cow.size, cow.size);
 
 	createCanvas(w, h);
+
+	cow = new cows();
+
 	// moo = play
 }
 
 function draw(){
+	background(255);
 
 	pens();
 
-	for(var i = 0; i < 5; i++){
-		cow();
-	}
+	cow.display();
+	cow.move();
 
-	// the img (x,y) is the top left corner
-	if(mouseX < (cow.x + cow.s) && mouseX > cow.x){
-		if(mouseY < (cow.y + cow.s) && mouseY > cow.y){
-			//could change if to while here, and then touch = true and mouseX and Y are cow x and y
+	// for(var i = 0; i < 5; i++){
+	// 	cow();
+	// }
+	// noLoop();
+
+	// cplacement();
+
+	// the img (cx,y) is the top left corner
+	if(mouseX < (cx + cs) && mouseX > cx){
+		if(mouseY < (cy + cs) && mouseY > cy){
+			//could change if to while here, and then touch = true and mousecx and Y are cow cx and y
 			if(mouseIsPressed){
 				cowtouch == true;
 			}
 		}
 	}
 
-	if(cow.x > 0 && cow.x < tlv){
-		if(cow.y > 0 && cow.y < tlh){
+	if(cx > 0 && cx < tlv){
+		if(cy > 0 && cy < tlh){
 			cowinpen == true;
 		}
 	}
@@ -83,56 +95,79 @@ function draw(){
 
 // //maybe do while(mouseIsPressed) instead of a function
 // function mousePressed(){
-// 	mouseX + (cow.s/2) = cow.x;
+// 	mousecx + (cow.s/2) = cow.cx;
 // 	mouseY + (cow.y/2) = cow.y;
 // }
 
 // //check that this doesnt permanently make them the same
 // function mouseReleased(){
-// 	mouseX = cow.x;
+// 	mousecx = cow.cx;
 // 	mouseY = cow.y;
 // }
 
-function cow(){
-	cpic = image(cowimg, x, y, 15, 15);
-	// noise = moo;
-	size = 15;
+// function cows(){
+// 	cs = 50;
+// 	cx = random(w/5, (w/5)*4);
+// 	cy = random(h/5, (h/5)*4);
+// 	cpic = image(cowimg, cx, cy, cs, cs);
+// 	cpic = image(cowimg, cx, cy, cs, cs);
+// 	cpic = image(cowimg, cx, cy, cs, cs);
+// 	cpic = image(cowimg, cx, cy, cs, cs);
+// 	cpic = image(cowimg, cx, cy, cs, cs);
+// }
 
-	function move(){
-		cow.xc += ((random(-5, 5)) * (frameCount/2));
-		cow.yc += ((random(-5, 5))* (frameCount/2));
+// function cmove(){
+// 		cx = cx + ((random(-5, 5)) * (frameCount/2));
+// 		cy = cy + ((random(-5, 5))* (frameCount/2));
+// 	}
+
+function cows(){
+	this.cx = random(w/5, (w/5 * 4));
+	this.cy = random(h);
+	this.cs = 50;
+	this.speed = 5;
+
+	// (random(-5, 5) * (frameCount/2));
+
+	this.move = function(){
+		this.cx += random(-this.speed, this.speed);
+		this.cy += random(-this.speed, this.speed);
+	};
+
+	this.display = function(){
+		image(cowimg, this.cx, this.cy, this.cs, this.cs);
 	}
-	x = random(w/5, (w/5)*4);
-	y = random(h/5, (h/5)*4);
 }
 
-function mouseClicked(){
-	cow.moo;
-}
+// function mouseClicked(){
+// 	cow.moo;
+// }
 
 function cplacement(){
+	var cowtouch = false;
+	var cowinpen = false;
 
-	if(cowtouch){
-		xc = cow.x;
-		yc = cow.y;
-	}
+	// if(cowtouch == false){
+	// 	cx = cx;
+	// 	cy = cy;
+	// }
 
 	// cow is in cow pen
-	if(cowinpen){
-		xc = constrain(cow.x, 0, tlv);
-		yc = constrain(cow.y, 0, tlh);
-	} else if(!cowinpen){
-		xc = constrain(cow.x, tlv, rlv);
+	if(cowinpen == false){
+		cx = constrain(cx, 0, tlv);
+		cy = constrain(cy, 0, tlh);
+	} else if(cowinpen == true){
+		cx = constrain(cx, tlv, rlv);
 	}
 
-	if(cow.y < cow.s || cow.y > h - cow.s){ // off the screen
-		cow.move = -cow.move;
+	if(cy < cs || cy > h - cs){ // off the screen
+		cmove() = -cmove();
 	}
 }
 
 // function scatter(){
-// 	cow.xc += (cow.move * (frameCount/2);
-// 	cow.yc += (cow.move * (frameCount/2);
+// 	cow.ccx += (cow.move * (frameCount/2);
+// 	cow.cy += (cow.move * (frameCount/2);
 // }
 
 function pens(){
