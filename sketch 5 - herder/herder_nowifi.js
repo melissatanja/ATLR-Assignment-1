@@ -37,10 +37,27 @@ function setup(){
 
 	createCanvas(w, h);
 
-	var cowtouch = false;
-	var cowinpen = false;
-
 	cow = new cows();
+
+	cowtouch = false;
+	cowinpen = false;
+
+	if(cx > 0 && cx < lv){
+		if(cy > 0 && cy < hrz){
+			cowinpen == true;
+		}
+	} else{
+		cowinpen == false;
+	}
+
+	// if(cowinpen == false){
+	// 	concx = constrain(this.cx, lv, rv);
+	// 	concy = constrain(this.cy, 0, h);
+	// }
+	// if(cowinpen == true){
+	// 	concx = constrain(this.cx, 0, lv);
+	// 	concy = constrain(this.cy, 0, hrz);
+	// }
 
 	// moo = play
 }
@@ -50,16 +67,11 @@ function draw(){
 
 	pens();
 
-	cow.display();
-	cow.move();
+	// cplacement();
 
-	if(cx > 0 && cx < lv){
-		if(cy > 0 && cy < hrz){
-			cowinpen == true;
-		}
-	} else{
-		cowinpen == false;
-	}
+	cow.display();
+	cow.constrain();
+	cow.move();
 
 }
 
@@ -107,13 +119,27 @@ function cows(){
 		if(this.cx < 0){
 			this.xspeed = - this.xspeed;
 		}
+	}
 
-		if(cx > 0 && cx < lv){
-			concx = constrain(this.cx, 0, lv);
-		}
+	this.constrain = function(){
 
-		if(cy > 0 && cy < hrz){
-			concy = constrain(this.cy, 0, hrz);
+		// if(cowinpen == true){
+		// 	cx = concx;
+		// 	cy = concy;
+
+		// 	concx = constrain(this.cx, 0, lv);
+		// 	concy = constrain(this.cy, 0, hrz);	
+		// }
+
+		if(this.cx < (w/5) || this.cx > ((w/5) * 4) - this.cs){
+			// cx = concx;
+			// cy = concy;
+			
+			this.xspeed = -this.xspeed;
+			this.cx = constrain(this.cx, lv, rv);
+			// concy = constrain(this.cy, 0, hrz);
+
+			// this.xspeed = - this.xspeed;
 		}
 	}
 
@@ -126,27 +152,32 @@ function cows(){
 // 	cow.moo;
 // }
 
-// function cplacement(){
-// 	var cowtouch = false;
-// 	var cowinpen = false;
+function cplacement(){
+	// cowtouch = false;
+	// cowinpen = false;
 
-// 	// if(cowtouch == false){
-// 	// 	cx = cx;
-// 	// 	cy = cy;
-// 	// }
+	// if(cx > 0 && cx < lv){
+	// 	if(cy > 0 && cy < hrz){
+	// 		cowinpen == true;
+	// 	}
+	// } else{
+	// 	cowinpen == false;
+	// }
 
-// 	// cow is in cow pen
-// 	if(cowinpen == false){
-// 		cx = constrain(cx, 0, tlv);
-// 		cy = constrain(cy, 0, tlh);
-// 	} else if(cowinpen == true){
-// 		cx = constrain(cx, tlv, rlv);
-// 	}
+	// cow is in the pen
 
-// 	if(cy < cs || cy > h - cs){ // off the screen
-// 		cmove() = -cmove();
-// 	}
-// }
+	// if(cx > 0 && cx < lv){
+	// 	concx = constrain(this.cx, 0, lv);
+	// }
+
+	// if(cy > 0 && cy < hrz){
+	// 	concy = constrain(this.cy, 0, hrz);
+	// }
+
+	// cow is not in the pen
+
+}
+
 
 // function scatter(){
 // 	cow.ccx += (cow.move * (frameCount/2);
@@ -158,3 +189,6 @@ function cows(){
 
 // https://www.youtube.com/watch?v=LO3Awjn_gyU&t=0s&index=14&list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA
 // made the cow bounce off the walls
+
+// https://processing.org/reference/this.html
+// explains what "this." means

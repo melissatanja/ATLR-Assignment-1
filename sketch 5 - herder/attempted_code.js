@@ -10,7 +10,7 @@
 		// 	ccx: ccx,
 		// 	cy: cy
 		// 	}
-		
+
 		// cowpic = image(cowimg, cx, y, cow.size, cow.size);
 
 // DRAW FUNCTION
@@ -73,6 +73,20 @@
 
 		// if(this.cy < this.cs || this.cy > h - this.cs){ // off the screen
 		// 	this.move = -this.move;
+		// }
+
+// PLACEMENT FUNCTION
+
+		// if(cowtouch == false){
+		// 	cx = cx;
+		// 	cy = cy;
+		// }
+		// cow is in cow pen
+		// if(cowinpen == false){
+		// 	cx = constrain(cx, 0, tlv);
+		// 	cy = constrain(cy, 0, tlh);
+		// } else if(cowinpen == true){
+		// 	cx = constrain(cx, tlv, rlv);
 		// }
 
 // OTHER FUNCTIONS
